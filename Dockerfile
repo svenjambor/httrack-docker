@@ -13,7 +13,7 @@ RUN apt-get update && \
     apt-get clean autoclean && \
     apt-get autoremove --yes && \
     rm -rf /var/lib/{apt,dpkg,cache,log}/ && \
-    wget  https://aka.ms/downloadazcopy-v10-linux && \
+    wget https://aka.ms/downloadazcopy-v10-linux --no-check-certificate && \
     tar -xvf downloadazcopy-v10-linux && \
     cp ./azcopy_linux_amd64_*/azcopy /usr/bin/ && \
     rm -rf ./azcopy* && rm -f downloadazcopy-v10-linux
