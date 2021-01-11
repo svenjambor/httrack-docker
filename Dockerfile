@@ -20,4 +20,4 @@ RUN apt-get update && \
     rm -rf ./azcopy* && rm -f downloadazcopy-v10-linux && \
     chmod +x ./run.sh
 
-ENTRYPOINT ["./run.sh"]
+ENTRYPOINT "./run.sh"
