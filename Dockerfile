@@ -7,7 +7,6 @@ ENV AZBLOBCONTAINERSAS="URL and SAS key of blob container to sync website conten
 ENV WEBSITE="Full URL (incl. http(s)://) of site to copy to blob container"
 
 WORKDIR /root/httrack
-ADD https://raw.githubusercontent.com/svenjambor/httrack-docker/main/run.sh .
 
 RUN apt-get update && \
     apt-get install -y wget httrack && \
@@ -17,7 +16,9 @@ RUN apt-get update && \
     wget  https://aka.ms/downloadazcopy-v10-linux && \
     tar -xvf downloadazcopy-v10-linux && \
     cp ./azcopy_linux_amd64_*/azcopy /usr/bin/ && \
-    rm -rf ./azcopy* && rm -f downloadazcopy-v10-linux && \
-    chmod +x ./run.sh
+    rm -rf ./azcopy* && rm -f downloadazcopy-v10-linux
+
+ADD https://raw.githubusercontent.com/svenjambor/httrack-docker/main/run.sh .
+RUN chmod +x ./run.sh
 
 ENTRYPOINT "./run.sh"
