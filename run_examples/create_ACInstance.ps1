@@ -1,20 +1,28 @@
 az login
+$SUBSCRIPTIONID = (az account show --query id -o tsv)
 
+#$WEBSITE="Full URL of site to copy, incl. http(s)"
 
+#$SA_RG= "Resource Group of storage account to write into"
+#$SA_NAME="Name of storage account to write into"
 
-$RESOURCEGROUP="RG_xxxxxx"
-$CONTAINERNAME="alllowercase"
-$WEBSITE="https://dynamicontentsite.fullurl.com"
+#$ACI_RG="Resource Group Name or Container Instance" 
+#$ACI_NAME="Name to use for container instance, all lowercase"
+#$ACI_ID_SCOPE="/subscriptions/$SUBSCRIPTIONID/resourceGroups/$SA_RG/providers/Microsoft.Storage/storageAccounts/$SA_NAME"
+
+$WEBSITE="https://dynamic.smurfje.com"
+$SA_RG= "RG_Webcontent_NEU"
+$SA_NAME="sastaticsmurfje"
+$ACI_RG="RG_Webcontent_NEU" 
+$ACI_NAME="acidlsmurfje"
+$ACI_ID_SCOPE="/subscriptions/$SUBSCRIPTIONID/resourceGroups/$SA_RG/providers/Microsoft.Storage/storageAccounts/$SA_NAME/blobServices/default"
 
 az container create `
-    --resource-group $RESOURCEGROUP `
-    --name $CONTAINERNAME `
+    --resource-group $ACI_RG `
+    --name $ACI_NAME `
     --image "sjambor/httrack:latest" `
-    --dns-name-label $CONTAINERNAME `
+    --dns-name-label $ACI_NAME `
     --restart-policy Never `
     --assign-identity `
-    --environment-variables WEBSITE=$WEBSITE `
-    --secure-environment-variables AZBLOBCONTAINERSAS='https://xxxxxxxxxx.blob.core.windows.net/$web/?sv=2019-12-12.......k%3D'
-
-
---scope /subscriptions/99999999-1bf0-4dda-aec3-cb9272f09590/MyResourceGroup/myRG/providers/Microsoft.Storage/storageAccounts/storage1
+    --scope $ACI_ID_SCOPE `
+    --environment-variables AZCOPY_AUTO_LOGIN_TYPE=MSI WEBSITE=$WEBSITE AZ_BLOB_SA=$SA_NAME

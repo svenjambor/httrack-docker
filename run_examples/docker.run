@@ -1,4 +1,4 @@
 
 
-docker run -d -e AZBLOBCONTAINERSAS='https://sastaticsmurfje.blob.core.windows.net/$web/?sv=2019-12-12&ss=b&srt=co&sp=rwdlacx&se=2022-01-12T18:42:16Z&st=2021-01-12T10:42:16Z&spr=https&sig=MeJhBGP7jBx0K4ecVRDphzqRopWGzhqJKHb9WdY%2BvWY%3D' -e WEBSITE="https://www.smurfje.com" --name httrack sjambor/httrack .
+docker run -d -e AZBLOBCONTAINERSAS='https://sastaticsmurfje.blob.core.windows.net/$web/?sv=2019-12-12&ss=b&srt=co&sp=rwdlacx&se=2022-01-12T1-12T10:42:16Z&spr=https&sig=MeJhBGP7jBx0K4ecVRDphzqRopWGzhqJKHb9WdY%2BvWY%3D' -e WEBSITE="https://www.xx.com" --name httrack sjambor/httrack .
 

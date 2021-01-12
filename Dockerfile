@@ -3,8 +3,12 @@ LABEL maintainer="sjambor <sven.jambor@gmail.com>"
 
 ENV NPM_CONFIG_LOGLEVEL info
 ENV TZ=Europe/Amsterdam
-ENV AZBLOBCONTAINERSAS="URL and SAS key of blob container to sync website contents into"
+
 ENV WEBSITE="Full URL (incl. http(s)://) of site to copy to blob container"
+ENV AZ_BLOB_SA="Storage Account Name"
+ENV AZ_BLOB_CONTAINER="\$web"
+ENV AZ_BLOB_ENDPOINT="blob.core.windows.net"
+ENV AZ_BLOB_SASTOKEN="not needed for ACI; please set in command line if using docker run"
 
 WORKDIR /root/httrack
 
