@@ -25,5 +25,5 @@ RUN apt-get update && \
 ADD https://raw.githubusercontent.com/svenjambor/httrack-docker/main/run.sh .
 RUN chmod +x ./run.sh
 
-#ENTRYPOINT "./run.sh"
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT "./run.sh"
+#ENTRYPOINT ["tail", "-f", "/dev/null"]
