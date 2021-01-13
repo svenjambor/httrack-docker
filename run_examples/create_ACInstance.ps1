@@ -14,7 +14,7 @@ az container create `
     --resource-group $ACI_RG `
     --name $ACI_NAME `
     --image "sjambor/httrack:latest" `
-    --restart-policy Never `
+    --restart-policy OnFailure `
     --assign-identity `
     --scope $ACI_ID_SCOPE `
     --role "Storage Blob Data Contributor" `
