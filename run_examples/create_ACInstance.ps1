@@ -25,5 +25,5 @@ az container create `
     --restart-policy Never `
     --assign-identity `
     --scope $ACI_ID_SCOPE `
-    --scope "Storage Blob Data Contributor" `
+    --role "Storage Blob Data Contributor" `
     --environment-variables AZCOPY_AUTO_LOGIN_TYPE=MSI WEBSITE=$WEBSITE AZ_BLOB_SA=$SA_NAME
